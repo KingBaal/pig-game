@@ -101,7 +101,8 @@ function save(userId) {
         disableCurrentUserButttons(userId);
     }
     currentUserScores = 0;
-    currUser.divNumber.innerHTML = `This roll points = 0`;
+    currUser.divNumber.innerHTML = 'This roll points = 0';
+    currUser.divMovePoints.innerHTML = 'This move points = 0';
 }
 
 function btnRestart() {
