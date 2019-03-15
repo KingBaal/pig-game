@@ -1,0 +1,168 @@
+#vanillatoasts-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* width: 320px; */
+  width: 18%;
+  font-family: 'Helvetica';
+  margin-top: 65px;
+  
+  -webkit-user-select: none;
+
+}
+
+.vanillatoasts-toast {
+  position: relative;
+  padding: 5px 5px;
+  /* margin: 20px; */
+  border-radius: 10px;
+  background: #F5F5F5;
+  cursor: pointer;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  animation-duration:  .3s;
+  animation-name: VanillaToasts;
+  animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+.vanillatoasts-fadeOut {
+  animation-name: VanillaToastsFadeOut;
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  animation-fill-mode: forwards;
+}
+
+#vanillatoasts-container p,
+#vanillatoasts-container h4 {
+  margin: 3px 0!important;
+}
+
+.vanillatoasts-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.vanillatoasts-text {
+  font-size: 14px;
+  color: #777;
+}
+
+.vanillatoasts-icon {
+  position: absolute;
+  top: 5px;
+  left: -40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  background: #FFF;
+}
+
+.vanillatoasts-toast a, .vanillatoasts-toast a:hover {
+  color: #549EDB !important;
+  text-decoration: none !important;
+}
+
+/** toast types */
+.vanillatoasts-success {
+  border-bottom: 2px solid #51C625;
+}
+
+.vanillatoasts-warning {
+  border-bottom: 2px solid #DB9215;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10%;
+  font-family: 'Helvetica';
+}
+
+.vanillatoasts-error {
+  border-bottom: 2px solid #DB2B1D;
+}
+
+.vanillatoasts-info {
+  border-bottom: 2px solid #27ABDB;
+  
+}
+
+.vanillatoasts-player-1 {
+  border-bottom: 2px solid rgb(0, 0, 0);
+  background-color: #FAEBD7;
+  /* position: fixed; */
+  
+}
+
+.vanillatoasts-player-2 {
+  border-bottom: 2px solid rgb(126, 219, 39);
+  background-color: #F0FFF0;
+  /* position: fixed; */  
+}
+
+.vanillatoasts-save {
+  border-bottom: 2px solid #27ABDB;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  margin-top: 75px;
+  margin-left: 31%;
+  font-family: 'Helvetica';
+  background-color: #B0C4DE;
+}
+
+.vanillatoasts-save-right {
+  border-bottom: 2px solid #27ABDB;
+  background-color: #B0C4DE;
+}
+
+.vanillatoasts-one {
+  border-bottom: 2px solid #DB2B1D;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  margin-top: 75px;
+  margin-left: 31%;
+  font-family: 'Helvetica';
+  background-color: #FF6347	;
+}
+
+.vanillatoasts-one-right {
+  border-bottom: 2px solid #DB2B1D;
+  background-color: #FF6347	;
+}
+
+.vanillatoasts-win {
+  border-bottom: 2px solid #FFD700;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  margin-top: 75px;
+  margin-left: 31%;
+  font-family: 'Helvetica';
+  background-color: #F0E68C;
+}
+
+@keyframes VanillaToasts {
+  from {
+    transform: translate3d(400px, 0, 0);;
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes VanillaToastsFadeOut {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(400px, 0, 0);
+    opacity: 0;
+  }
+}

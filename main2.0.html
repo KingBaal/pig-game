@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+     <link href="modules/vanilla-toast/vanillatoasts.css" rel="stylesheet"/>
+     <script src="modules/vanilla-toast/vanillatoasts.js" defer></script>
+     <link href="modules/src/tingle.css" rel="stylesheet"/>
+     <script src="modules/src/tingle.js" defer></script>
+     <script src="pigDice2.0.js" defer></script>
+  
+     <link rel="stylesheet" href="pigDice2.0.css">
+</head>
+
+<body>          
+     <div class="my-flex-container">
+          <div class="my-flex-block">
+               <div class="button-container">
+                    <button id="btn-dice-roll-x" value="disable">Dice roll</button>
+                    <button id="btn-save-x" value="disable">Save</button>
+               </div>
+               <div id="div-number-x" class="info">This roll points = 0</div>
+               <div id="div-move-points-x" class="info">This move points = 0</div>
+               <div id="div-all-points-x" class="info">All points = 0</div>
+          </div>
+          <div class="my-flex-block" id="my-flex-block-2">
+               <h1>Pig game</h1>
+               <div id="rules">
+                    Правила игры: Цель игры — набрать 100 очков.
+                    Ход заключается в следующем: 
+                    игрок делает ход (нажимая кнопку "Dice roll") неограниченное 
+                    число раз и суммирует выпадающие значения. Однако если 
+                    выпадает единица, вся сумма, набранная за ход, аннулируется 
+                    и ход переходит к следующему игроку. 
+                    Игрок может завершить свой ход в любой момент 
+                    (нажав кнопку "Save") и сохранив набранные очки.
+               </div>
+               
+               <div class="bones">
+                    <img src="img/empty.png" class="showed">
+                    <img src="img/1.png" >
+                    <img src="img/2.png" >
+                    <img src="img/3.png" >
+                    <img src="img/4.png" >
+                    <img src="img/5.png" >
+                    <img src="img/6.png" >
+               </div>
+               <button id="btn-new-game" >New game</button>
+          </div>
+          <div class="my-flex-block">
+               <div>
+                    <button id="btn-dice-roll-y" value="disable" disabled>Dice roll</button>
+                    <button id="btn-save-y" value="disable" disabled>Save</button>
+               </div>
+               <div id="div-number-y" class="info">This roll points = 0</div>
+               <div id="div-move-points-y" class="info">This move points = 0</div>
+               <div id="div-all-points-y" class="info">All points = 0</div>
+          </div>
+        </div>
+    
+
+</body>
+</html>

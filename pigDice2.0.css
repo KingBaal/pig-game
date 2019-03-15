@@ -1,0 +1,118 @@
+body {
+    font-family: Verdana;
+    font-size: 13px;
+    color: #333;
+    background: #f3f3f3;
+    text-align: center;
+}
+
+.info {
+    width: 175px;
+    height: 80px;
+    background-color: #FFE4E1;
+    margin: 15px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 25px;
+    font-size: 15px;
+}
+
+.my-flex-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: solid black 1px;
+    border-radius: 8px;
+    background-color: #FFF5EE;
+    width: 80%;
+    margin-top: 65px;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* height: 400px; */
+    -webkit-user-select: none;
+
+}
+
+#my-flex-block-2 {
+    margin-top: 65px;
+    width: 400px;
+}
+
+#rules {
+    margin-top: 15px;
+    text-indent: 10px;
+    text-align: justify;
+}
+
+.bones {
+    margin-top: 20px;
+    /* width: 300px; */
+    height: 85px;
+
+    display: flex;
+    /* align-items: center; */
+    justify-content: center
+}
+
+.my-flex-container .my-flex-block .bones img { 
+    width: 65px;
+    height: 65px;
+    /* background-color: aqua; */
+    position: absolute;
+    opacity: 0;
+    transition: transform 1s;
+}
+
+.my-flex-container .my-flex-block .bones img.showed {
+    opacity: 1;
+    transform: rotate(11160deg) scale(1.2);
+}
+
+button, 
+.info {
+    text-decoration: none;
+    outline: none;
+    background: #FFE4E1;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fe6637;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif; 
+    color: #fe6637;
+    transition: .2s ease-in-out;
+}
+
+button:before, 
+.info:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(214, 241, 92, 0.1), rgba(255,255,255,.5));
+    height: 155px;
+    width: 70px;
+    position: absolute;
+    top: -30px;
+    left: -115px;
+    transform: skewX(-45deg);
+}
+
+button:hover, 
+.info:hover {
+    background: #fe6637;
+    color: #fff;
+}
+
+button:hover:before, 
+.info:hover:before {
+    left: 250px;
+    transition: .6s ease-in-out;
+}
+
+button {
+    padding: 10px 10px;
+    margin: 10px 10px;
+}
+
+button:disabled,
+button[disabled] {
+    background-color: #cccccc;
+    color: #666666;
+}
