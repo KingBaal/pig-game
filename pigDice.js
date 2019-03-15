@@ -38,20 +38,25 @@ let users = {
 
 let bones = document.querySelectorAll('.my-flex-container .my-flex-block .bones img');
 let arr = [...bones]; // convert nodelist to array
-let btnsArr = [btnRollX, btnRollY, btnSaveX, btnSaveY];
 
 function removeShowedClass() {
     arr.forEach( item => item.classList.remove('showed') );
 }
 
-function enableAllUserButtons() {
-    btnsArr.forEach( element => element.disabled = false );
+function enableCurrentUserButttons() {
+    users[currentUserId].btnRoll.disabled = false;
+    users[currentUserId].btnSave.disabled = false;
 }
 
-function disableCurrentUserButttons(userId) {
-    let currUser = users[userId];
-    currUser.btnRoll.disabled = true;
-    currUser.btnSave.disabled = true;
+function disableCurrentUserButttons() {
+    users[currentUserId].btnRoll.disabled = true;
+    users[currentUserId].btnSave.disabled = true;
+}
+
+function changeActiveUser() {
+    disableCurrentUserButttons();
+    currentUserId = currentUserId === 0 ? 1 : 0;
+    enableCurrentUserButttons();
 }
 
 function getRandomInt(min, max) {
@@ -63,8 +68,8 @@ function roll(userId) {
     removeShowedClass();
     // console.log('current user => ', users[userId]);
     let currUser = users[userId];
-    let currentNumber = getRandomInt(1, 7);
-    currUser.divNumber.innerHTML = `This roll points =  ${currentNumber}.`;
+    let currentNumber = getRandomInt(1, 6);
+    currUser.divNumber.innerHTML = `This roll points =  ${currentNumber}`;
     
     if (currentNumber === 1) {
         currentUserScores = 0;
@@ -72,9 +77,7 @@ function roll(userId) {
         currUser.divMovePoints.innerHTML = 'This move points = 0';
         toast('Oops, it\'s 1.', 'Next player turn.', 'one', 3000);
         toast(`${currUser.playerNumber}`, 'Oops, it\'s 1.', currUser.playerNumber, 20000);
-        enableAllUserButtons();
-        disableCurrentUserButttons(userId);
-        currentUserId = currentUserId === 0 ? 1 : 0;
+        changeActiveUser();
     } else {
         currentUserScores += currentNumber;
         currUser.divMovePoints.innerHTML = `This move points = ${currentUserScores}`;
@@ -90,15 +93,14 @@ function save(userId) {
     currUser.divAllPoints.innerHTML = `All points = ${currUser.usersScores}`;
 
     if (currUser.usersScores >= 100) {
-        disableCurrentUserButttons(userId);
         toast('You win!', `Your score = ${currUser.usersScores}`, 'win', 10000);
         modal.open();
+        disableCurrentUserButttons();
     } else {
         toast('Next player turn.', 'You save points.', 'save', 3000);
         toast(`${currUser.playerNumber} score - ${currUser.usersScores}`, 
               `This move points = ${currentUserScores}`, currUser.playerNumber, 20000);
-        enableAllUserButtons();
-        disableCurrentUserButttons(userId);
+        changeActiveUser();
     }
     currentUserScores = 0;
     currUser.divNumber.innerHTML = 'This roll points = 0';
@@ -107,14 +109,12 @@ function save(userId) {
 
 function btnRestart() {
     for (i = 0; i < Object.keys(users).length; i++) { 
+        users[i].divNumber.innerHTML = 'This roll points = 0';
         users[i].divMovePoints.innerHTML = 'This move points = 0';
         users[i].usersScores = 0;
         users[i].divAllPoints.innerHTML = 'All points = 0';
     }
-    enableAllUserButtons();
-    disableCurrentUserButttons(currentUserId);
-    currentUserId = currentUserId === 0 ? 1 : 0;
-
+    changeActiveUser();
     btnNewGame.disabled = true;
 }
 
@@ -124,7 +124,6 @@ function btnRoll() {
 
 function btnSave() {
     save(currentUserId);
-    currentUserId = currentUserId === 0 ? 1 : 0;
 }
 
 function toast(title, text, type, timeout) {
