@@ -35,7 +35,6 @@ let users = {
         playerNumber: 'player-2'
     }
 };
-console.log( users[0].usersScores );
 
 let bones = document.querySelectorAll('.my-flex-container .my-flex-block .bones img');
 let arr = [...bones]; // convert nodelist to array
@@ -60,6 +59,7 @@ function getRandomInt(min, max) {
 }
 
 function roll(userId) {
+    btnNewGame.disabled = false;
     removeShowedClass();
     // console.log('current user => ', users[userId]);
     let currUser = users[userId];
@@ -89,7 +89,7 @@ function save(userId) {
     currUser.usersScores += currentUserScores;
     currUser.divAllPoints.innerHTML = `All points = ${currUser.usersScores}`;
 
-    if (currUser.usersScores >= 100) {
+    if (currUser.usersScores >= 10) {
         disableCurrentUserButttons(userId);
         toast('You win!', `Your score = ${currUser.usersScores}`, 'win', 10000);
         modal.open();
@@ -104,20 +104,25 @@ function save(userId) {
     currUser.divNumber.innerHTML = `This roll points = 0`;
 }
 
-function restartPlayer(userId) {
-    let currUser = users[userId];
-    currUser.divMovePoints.innerHTML = 'This move points = 0';
-    currUser.usersScores = 0;
-    currUser.divAllPoints.innerHTML = 'All points = 0';
-    disableCurrentUserButttons(userId);
-}
+// function restartPlayer(userId) {
+//     let currUser = users[userId];
+//     currUser.divMovePoints.innerHTML = 'This move points = 0';
+//     currUser.usersScores = 0;
+//     currUser.divAllPoints.innerHTML = 'All points = 0';
+//     disableCurrentUserButttons(userId);
+// }
 
 function btnRestart() {
-    restartPlayer(currentUserId);
-    currentUserId = currentUserId === 0 ? 1 : 0;
+    for (i = 0; i < Object.keys(users).length; i++) { 
+        users[i].divMovePoints.innerHTML = 'This move points = 0';
+        users[i].usersScores = 0;
+        users[i].divAllPoints.innerHTML = 'All points = 0';
+    }
     enableAllUserButtons();
-    restartPlayer(currentUserId);
+    disableCurrentUserButttons(currentUserId);
     currentUserId = currentUserId === 0 ? 1 : 0;
+
+    btnNewGame.disabled = true;
 }
 
 function btnRoll() {
