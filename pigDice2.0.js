@@ -89,7 +89,7 @@ function save(userId) {
     currUser.usersScores += currentUserScores;
     currUser.divAllPoints.innerHTML = `All points = ${currUser.usersScores}`;
 
-    if (currUser.usersScores >= 10) {
+    if (currUser.usersScores >= 100) {
         disableCurrentUserButttons(userId);
         toast('You win!', `Your score = ${currUser.usersScores}`, 'win', 10000);
         modal.open();
@@ -103,14 +103,6 @@ function save(userId) {
     currentUserScores = 0;
     currUser.divNumber.innerHTML = `This roll points = 0`;
 }
-
-// function restartPlayer(userId) {
-//     let currUser = users[userId];
-//     currUser.divMovePoints.innerHTML = 'This move points = 0';
-//     currUser.usersScores = 0;
-//     currUser.divAllPoints.innerHTML = 'All points = 0';
-//     disableCurrentUserButttons(userId);
-// }
 
 function btnRestart() {
     for (i = 0; i < Object.keys(users).length; i++) { 
