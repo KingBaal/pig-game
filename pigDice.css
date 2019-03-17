@@ -28,12 +28,10 @@ body {
     margin-top: 65px;
     margin-left: 10px;
     margin-right: 10px;
-    /* height: 400px; */
     -webkit-user-select: none;
-
 }
 
-#my-flex-block-2 {
+.my-flex-block:nth-child(2) {
     margin-top: 65px;
     width: 400px;
 }
@@ -46,18 +44,14 @@ body {
 
 .bones {
     margin-top: 20px;
-    /* width: 300px; */
     height: 85px;
-
     display: flex;
-    /* align-items: center; */
     justify-content: center
 }
 
 .my-flex-container .my-flex-block .bones img { 
     width: 65px;
     height: 65px;
-    /* background-color: aqua; */
     position: absolute;
     opacity: 0;
     transition: transform 1s;
@@ -68,7 +62,7 @@ body {
     transform: rotate(11160deg) scale(1.2);
 }
 
-button, 
+.btn, 
 .info {
     text-decoration: none;
     outline: none;
@@ -82,7 +76,7 @@ button,
     transition: .2s ease-in-out;
 }
 
-button:before, 
+.btn:before, 
 .info:before {
     content: "";
     background: linear-gradient(90deg, rgba(214, 241, 92, 0.1), rgba(255,255,255,.5));
@@ -94,31 +88,31 @@ button:before,
     transform: skewX(-45deg);
 }
 
-button:hover, 
+.btn:hover, 
 .info:hover {
     background: #fe6637;
     color: #fff;
 }
 
-button:hover:before, 
+.btn:hover:before, 
 .info:hover:before {
     left: 250px;
     transition: .6s ease-in-out;
 }
 
-button {
+.btn {
     padding: 10px 10px;
     margin: 10px 10px;
     cursor: pointer;
 }
 
-button:disabled,
-button[disabled] {
+.btn:disabled,
+.btn[disabled] {
     background-color: #cccccc;
     color: #666666;
     cursor: default;
 }
 
-button:active {
+.btn:active {
     background-color: aqua;
 }
